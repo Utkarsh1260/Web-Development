@@ -1,0 +1,20 @@
+++++++++++++++++++++++++___________Nodejs Programs_____________+++++++++++++++++++++
+P1. Variables in JS
+P2  array
+P3. Objects in JS
+P4. filter function for array
+P5. Taking user input in javascript
+P6. various types of declaring a function is
+P7. callback function
+P8. Using different inbuilt library of nodejs
+P9. Importing file and its content to other file
+P10. lodash library- makes your development easy
+P11. JSON to object convert
+P12. Convert Object to json
+P13. Making server and get api using express js
+
+
+++++++++++++++++++++++++___________Assignment Programs_____________+++++++++++++++++++++
+A1. Allow discount based on age
+A2. Create objects and display their details
+A3 Check member is in guest list or not
