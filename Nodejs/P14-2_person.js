@@ -1,7 +1,9 @@
+const mongoose = require('mongoose');
+
 // Defining the person schema
 const  personSchema = new mongoose.Schema({
     name:{
-        tpype: String,
+        type: String,
         required: true
     },
 
@@ -11,7 +13,7 @@ const  personSchema = new mongoose.Schema({
 
     work:{
         type:String,
-        enum: ['chef', 'water', 'manager'],
+        enum: ['chef', 'waiter', 'manager'],
         required:true
     },
 
@@ -37,3 +39,5 @@ const  personSchema = new mongoose.Schema({
         required:true
     }
 });
+
+module.exports = mongoose.model('Person', personSchema);
