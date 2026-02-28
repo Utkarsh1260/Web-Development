@@ -1,3 +1,7 @@
+things like app.get, app.post, app.get('/person/:workType', async(req, res))- all are API or endpoints
+
+
+
 ++++++++++++++++++++++++___________Nodejs Programs_____________+++++++++++++++++++++
 P1. Variables in JS
 P2  array

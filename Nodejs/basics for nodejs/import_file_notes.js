@@ -1,4 +1,4 @@
-const notes=require('./P9-1-notes.js'); //importing another file
+const notes=require('./notes.js'); //importing another file
 
 var  age=notes.age;
 var ans=notes.sum(age+10,20);
