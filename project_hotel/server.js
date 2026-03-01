@@ -1,4 +1,4 @@
-require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
+// require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]); //this is only for your local use when deploying your project online comment it always
 
 
 const express = require('express')
@@ -63,8 +63,7 @@ app.get('/menu', async (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log('listening on port 3000');
-})
-
+  console.log(`listening on port ${PORT}`);
+});
 
 
