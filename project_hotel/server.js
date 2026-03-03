@@ -5,10 +5,25 @@ const express = require('express')
 const app = express();
 const db = require('./db'); // connecting with mongodb server file
 require('dotenv').config();
+const passport=require('passport');
+const LocalStrategy=require('passport-local');
 
 const bodyParser = require('body-parser'); // parse incoming JSON
 app.use(bodyParser.json());
 const PORT=process.env.PORT || 3000
+
+//middleware function
+const logRequest =(req, res, next) =>{
+    console.log(`${new Date().toLocaleString()} Request Made to: ${req.originalUrl}`);
+    next();
+}
+
+
+app.use(logRequest);
+
+app.get('/', function(req, res){
+    res.send("Take the blue juice");
+})
 
 // models used in this server
 const person = require('./models/person');
