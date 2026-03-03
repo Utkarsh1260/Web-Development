@@ -6,7 +6,8 @@ const app = express();
 const db = require('./db'); // connecting with mongodb server file
 require('dotenv').config();
 const passport=require('passport');
-const LocalStrategy=require('passport-local');
+const LocalStrategy=require('passport-local').Strategy;
+const Person=require('./models/person') // for authentication process
 
 const bodyParser = require('body-parser'); // parse incoming JSON
 app.use(bodyParser.json());
@@ -21,7 +22,35 @@ const logRequest =(req, res, next) =>{
 
 app.use(logRequest);
 
-app.get('/', function(req, res){
+
+passport.use(new LocalStrategy(async (USERNAME, password, done) =>{
+    //authentication logic 
+    try{
+        console.log('Recieved credentials:', USERNAME, password);
+        const user = await Person.findOne({username: USERNAME});
+        if(!user)
+            return done(null, false, {message: 'Incorrect username.'});
+        const isPasswordMatch= user.password === password ? true : false;
+        if(isPasswordMatch){
+            return done(null, user);
+        }
+        else{
+            return done(null, false, {message: 'Incorrect password.'});
+        }
+
+    }
+
+    catch(err){
+        return done(err);
+
+    }
+}))
+
+app.use(passport.initialize());
+
+const localAuthMiddleware=passport.authenticate('local', {session:false})
+
+app.get('/', localAuthMiddleware, function(req, res){
     res.send("Take the blue juice");
 })
 
@@ -43,7 +72,11 @@ app.get('/', function (req, res) {
 
 // Importing the router files of person
 const personRoutes = require('./routes/personRoutes');
-app.use('/person', personRoutes);
+const menuItemRoutes = require('./routes/menuItemRoutes');
+
+// use the routes
+app.use('/person', localAuthMiddleware, personRoutes);
+app.use('/menu', localAuthMiddleware, menuItemRoutes);
 
 // menu routes defined in this file
 
