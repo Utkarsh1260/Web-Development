@@ -31,3 +31,17 @@ const menuItemSchema = new mongoose.Schema({
 
 const menuItem= mongoose.model('menuItem', menuItemSchema);
 module.exports = menuItem;
+
+
+
+
+/* dummy data
+{
+  "name": "Mango Shake",
+  "price": 120,
+  "taste": "sweet",
+  "is_drink": true,
+  "ingredients": ["mango", "milk", "sugar"],
+  "num_sales": 25
+}
+*/
