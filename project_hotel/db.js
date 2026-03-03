@@ -3,10 +3,10 @@ const mongoose=require('mongoose');
 
 
 // //mongodb connection url - using local MongoDB
-//const mongoURL=process.env.MONGODB_URL_LOCAL
+const mongoURL=process.env.MONGODB_URL_LOCAL
 
 //connecting to local mongodb server for development
- const mongoURL=process.env.MONGODB_URL
+//  const mongoURL=process.env.MONGODB_URL
 
 
 //set up mongodb connection
